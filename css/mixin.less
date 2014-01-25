@@ -1,0 +1,85 @@
+/* COLORS
+---------------------- */
+@color: #1791E6;
+@color-1: #37A8F6;
+@color-2: #FFF;
+@color-3: #333;
+@color-4: #3C0;
+@color-5: #C33;
+
+/* FONTS
+---------------------- */
+@font: Helvetica, Arial, Verdana, sans-serif;
+
+
+
+/* MIXINS
+---------------------- */
+.opacity (@op:1){
+	@op-ie: @op * 100;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=@{op-ie})";
+	filter: alpha(opacity=@op-ie);
+	-webkit-opacity: @op;
+	-khtml-opacity: @op;
+	-moz-opacity: @op;
+	opacity: @op;
+}
+
+.transition (@transition) {
+	-webkit-transition: @transition;  
+	-moz-transition:    @transition;
+	-ms-transition:     @transition; 
+	-o-transition:      @transition;  
+}
+
+.border-radius (@radius: 0) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+	border-radius: @radius;
+	behavior: url(PIE.htc);
+}
+
+.gradient (@origin: left, @start: #FFFFFF, @stop: #000000) {
+	background-color: @start;
+	background-image: -webkit-linear-gradient(@origin, @start, @stop);
+	background-image: -moz-linear-gradient(@origin, @start, @stop);
+	background-image: -o-linear-gradient(@origin, @start, @stop);
+	background-image: -ms-linear-gradient(@origin, @start, @stop);
+	background-image: linear-gradient(@origin, @start, @stop);
+	-pie-background: linear-gradient(@origin, @start, @stop);
+	behavior: url(PIE.htc);
+}
+
+.gradientIE (@type: 1, @start: #FFFFFF, @end: #000000) {
+	@c-start: argb(@start);
+	@c-end: argb(@end);
+	filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr='@{c-start}', endColorstr='@{c-end}', GradientType=@{type})";
+	-ms-filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr='@{c-start}',endColorstr='@{c-end}',GradientType=@{type})";
+	/* 0 = vertical ; 1 = horizontal */
+}
+
+.box-shadow (@x: 0, @y: 3px, @blur: 5px, @color: #000000) {
+	-webkit-box-shadow: @x @y @blur @color;
+	-moz-box-shadow: @x @y @blur @color;
+	box-shadow: @x @y @blur @color;
+}
+
+.inner-shadow (@x: 0, @y: 1px, @blur: 2px, @color: #000000) {
+	-webkit-box-shadow: inset @x @y @blur @color;
+	-moz-box-shadow: inset @x @y @blur @color;
+	box-shadow: inset @x @y @blur @color;
+}
+
+.box-sizing (@type: border-box) {
+	-webkit-box-sizing: @type;
+	-moz-box-sizing: @type;
+	box-sizing: @type;
+}
+
+.word-wrap{
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -pre-wrap;
+	white-space: -o-pre-wrap;
+	word-wrap: break-word;
+}

@@ -1,0 +1,220 @@
+/*
+Author: anacuco
+Author URI: http://anacuco.com/
+Version: 1.0
+
+All rights reserved (c) 2013 - anacuco */
+
+
+@import "reset.less";
+@import "mixin.less";
+
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+GLOBAL ELEMENTS
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+body{ background: url('../images/bg.png') repeat;  }
+/* TEXT
+---------------------- */
+p,span,a,ul,ol,div,h1,h2{
+	font: bold 12px/16px @font;
+	color: @color-2;
+}
+h1{
+	font-size: 30px;
+	line-height: 34px;
+}
+h2{
+	font-size: 18px;
+	line-height: 22px;
+}
+a{
+	text-decoration: none;
+	a:focus{ outline: 0 none; }
+}
+
+.close{
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	width: 15px;
+	height: 15px;
+	display: block;
+	.border-radius (10px);
+	border: 1px solid @color-2;
+	.opacity(0.5);
+	color: @color-2;
+	font-size: 13px;
+	line-height: 14px;
+	text-align: center;
+	&:hover{
+		.opacity(1);
+	}
+}
+.animation{
+	.transition (all 0.1s ease-out);
+}
+
+.logo{
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+	width: 150px;
+	.transition (all 0.5ms ease-out);
+	&:hover{
+		bottom: 22px;
+		.opacity (0.9);
+	}
+}
+
+.wrapper-box{
+	background: url('../images/sims_bg.png') no-repeat 0 0;
+	position: absolute;
+	top: -50%;
+	left: 50%;
+	margin: -200px 0 0 -300px;
+	width: 600px;
+	height: 400px;
+	.title{
+		height: 97px;
+		text-align: center;
+		padding-top: 26px;
+	}
+}
+
+#step0{
+	display: none;
+	.buttons{
+		bottom: 20px;
+		width: 300px;
+		margin: 65px auto 0 auto;
+		text-align: center;
+		.btn1{
+			background-color: @color;
+			border: 1px solid @color-1;
+			display: inline-block;
+			width: 290px;
+			height: 78px;
+			.box-shadow (0, 0, 3px, #333);
+			.transition (all 0.1s ease-out);
+			font-size: 22px;
+			line-height: 78px;
+			text-transform: uppercase;
+			&:hover{
+				background-color: @color-1;
+				width: 300px;
+				height: 80px;
+				font-size: 24px;
+			}
+		}
+		.btn2{
+			.btn1;
+			margin-top: 2px;
+		}
+	}
+}
+#step1{
+	display: none;
+	.choose{
+		text-align: center;
+		margin-top: 50px;
+		a{
+			.transition (all 0.1s ease-out);
+			.box-sizing;
+			.border-radius (72px);
+			.box-shadow (0, 0, 3px, #333);
+			border: 8px solid @color;
+			display: inline-block;
+			width: 145px;
+			height: 145px;
+			margin: 0 10px;
+			position: relative;
+			z-index: 1;
+			span{
+				.transition (all 0.3s ease-out);
+				position: absolute;
+				top: 95px;
+				left: 0;
+				width: 100%;
+				z-index: 0;
+				.opacity (0);
+			}
+			&#one{ background: url('../images/choose_one.png') no-repeat -88px -40px; }
+			&#two{ background: url('../images/choose_two.png') no-repeat -82px 0; }
+			&#three{ background: url('../images/choose_three.png') no-repeat -23px 0; }
+			&:hover{
+				border: 2px solid @color;
+				span{
+					top: 150px;
+					.opacity (1);
+				}
+			}
+		}
+	}
+	.choose-videos{
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 2;
+		iframe{
+			display: none;
+			width: 600px;
+			height: 400px;
+		}
+		.close{
+			display: none;
+			top: -24px;
+		}
+	}
+}
+
+@icon-size: 90px;
+
+#step2{
+	display: none;
+	.choose-more{
+		width: 466px;
+		margin: 0 auto;
+		a{
+			background-color: @color-3;
+			margin: 24px 12px 0 12px;
+			display: inline-block;
+			.border-radius (45px);
+			.box-shadow (0, 0, 3px, #333);
+			.icons-grid{
+				background: url("../images/icons-grid.png") 0 0 no-repeat;
+				display: block;
+				width: @icon-size;
+				height: @icon-size;
+				&.old{ background-position: -@icon-size 0; }
+				&.elec{ background-position: -2*@icon-size 0; }
+				&.fire{ background-position: -3*@icon-size 0; }
+				&.knife{ background-position: -4*@icon-size 0; }
+				&.bucket{ background-position: -5*@icon-size 0; }
+				&.water{ background-position: -6*@icon-size 0; }
+				&.meteo{ background-position: -7*@icon-size 0; }
+			}
+			&:hover{ background-color: @color-1; }
+		}
+	}
+}
+
+#result{
+	.box-shadow (0, 0, 3px, #333);
+	position: absolute;
+	top: 200px;
+	left: 100px;
+	width: 450px;
+	height: 0;
+	&.good{ background-color: @color-4; }
+	&.bad{ background-color: @color-5; }
+	p{
+		padding: 40px 20px 0 20px;
+		text-align: center;
+		color: #FFF;
+		font-size: 20px;
+		line-height: 24px;
+	}
+}
+
