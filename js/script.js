@@ -56,83 +56,29 @@ function bindvideo(){
 }
 
 function showresult(){
-	$('#photo').click(function() {
-		$('#result').addClass('bad');
-		$('#result').append('<p>Seriously? Think again</p>').animate({ height: '96px'},500, function() {
+	bindResults('#photo', 'bad', 'Seriously? Think again');
+	bindResults('#old', 'good', 'Correct! Let your Sim reach the end of their lifespan');
+	bindResults('#elec', 'good', 'Correct! Electrocution can happen when fixing something electronic');
+	bindResults('#fire', 'good', 'Correct! They can die this way');
+	bindResults('#knife', 'bad', 'Wrong! You\'re watching too much Dexter');
+	bindResults('#bucket', 'bad', 'What?? Go play more Sims 3');
+	bindResults('#water', 'good', 'Nice! So you put wall around<br /> the pool...');
+	bindResults('#meteo', 'good', 'Sure! There is a small chance of them being crushed by a meteorit');
+}
+
+function bindResults(_div, _goodorbad, _text) {
+	var _height = '96';
+
+	if(_goodorbad == 'good')
+		_height = '120';
+
+	$(_div).click(function() {
+		$('#result').addClass(_goodorbad);
+		$('#result').append('<p>'+_text+'</p>').animate({ height: _height+'px'},500, function() {
 			setTimeout(function(){
         		$('#result p').remove();
-        		$('#result').css('height','0');
-        		$('#result').removeClass('bad');
-		    }, 1200);
-		});
-	});
-	$('#old').click(function() {
-		$('#result').addClass('good');
-		$('#result').append('<p>Correct! Let your Sim reach the end of their lifespan</p>').animate({ height: '120px'},500, function() {
-			setTimeout(function(){
-        		$('#result p').remove();
-        		$('#result').css('height','0');
-        		$('#result').removeClass('good');
-		    }, 2000);
-		});
-	});
-	$('#elec').click(function() {
-		$('#result').addClass('good');
-		$('#result').append('<p>Correct! Electrocution can happen when fixing something electronic</p>').animate({ height: '120px'},500, function() {
-			setTimeout(function(){
-        		$('#result p').remove();
-        		$('#result').css('height','0');
-        		$('#result').removeClass('good');
-		    }, 2000);
-		});
-	});
-	$('#fire').click(function() {
-		$('#result').addClass('good');
-		$('#result').append('<p>Correct! They can die this way</p>').animate({ height: '96px'},500, function() {
-			setTimeout(function(){
-        		$('#result p').remove();
-        		$('#result').css('height','0');
-        		$('#result').removeClass('good');
-		    }, 1800);
-		});
-	});
-	$('#knife').click(function() {
-		$('#result').addClass('bad');
-		$('#result').append("<p>Wrong! You're watching too much Dexter</p>").animate({ height: '96px'},500, function() {
-			setTimeout(function(){
-        		$('#result p').remove();
-        		$('#result').css('height','0');
-        		$('#result').removeClass('bad');
-		    }, 1800);
-		});
-	});
-	$('#bucket').click(function() {
-		$('#result').addClass('bad');
-		$('#result').append('<p>What?? Go play more Sims 3</p>').animate({ height: '96px'},500, function() {
-			setTimeout(function(){
-        		$('#result p').remove();
-        		$('#result').css('height','0');
-        		$('#result').removeClass('bad');
-		    }, 1200);
-		});
-	});
-	$('#water').click(function() {
-		$('#result').addClass('good');
-		$('#result').append('<p>Nice! So you put wall around the pool...</p>').animate({ height: '96px'},500, function() {
-			setTimeout(function(){
-        		$('#result p').remove();
-        		$('#result').css('height','0');
-        		$('#result').removeClass('good');
-		    }, 2400);
-		});
-	});
-	$('#meteo').click(function() {
-		$('#result').addClass('good');
-		$('#result').append('<p>Sure! There is a small chance of them being crushed by a meteorite</p>').animate({ height: '120px'},500, function() {
-			setTimeout(function(){
-        		$('#result p').remove();
-        		$('#result').css('height','0');
-        		$('#result').removeClass('good');
+        		$('#result').css('height','');
+        		$('#result').removeClass(_goodorbad);
 		    }, 2800);
 		});
 	});
